@@ -216,7 +216,7 @@ public class WebViewManager: NSObject, WKNavigationDelegate, WKScriptMessageHand
     /// - Parameters:
     ///     - path: The selector of the element to check.
     ///
-    /// - Returns: `true` if the given element takes text input, if not, `false`.
+    /// - Returns: `true` if the given element is an iframe.
     public func isIframe(_ path: String) -> Bool {
         
         if Thread.current.isMainThread {
@@ -247,7 +247,7 @@ public class WebViewManager: NSObject, WKNavigationDelegate, WKScriptMessageHand
     /// - Parameters:
     ///     - path: The selector of the element to check.
     ///
-    /// - Returns: `true` if the given element takes text input, if not, `false`.
+    /// - Returns: The location of the element.
     public func location(ofElementAt path: String) -> CGPoint {
         
         if Thread.current.isMainThread {

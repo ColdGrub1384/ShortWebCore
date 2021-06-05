@@ -103,14 +103,6 @@ webView.inspect { manager in
 
 ```swift
 
-/// Returns the web kit frame info object corresponding to the given iframe.
-///
-/// - Parameters:
-///     - iframePath: The HTML selector of an iframe.
-///
-/// - Returns: The frame info and the content world which urls corresponds to the iframe. Returns the main frame if no frame info is found.
-public func frame(for iframePath: String) -> IFrame
-
 /// Checks if the HTML element at the given selector is a text box.
 ///
 /// - Parameters:
@@ -134,7 +126,7 @@ public func isFileInput(_ path: String, onIframeAt iframePath: String? = nil) ->
 /// - Parameters:
 ///     - path: The selector of the element to check.
 ///
-/// - Returns: `true` if the given element takes text input, if not, `false`.
+/// - Returns: `true` if the given element is an iframe.
 public func isIframe(_ path: String) -> Bool
 
 /// Returns the location of the element at the given path.
@@ -142,7 +134,7 @@ public func isIframe(_ path: String) -> Bool
 /// - Parameters:
 ///     - path: The selector of the element to check.
 ///
-/// - Returns: `true` if the given element takes text input, if not, `false`.
+/// - Returns: The location of the element.
 public func location(ofElementAt path: String) -> CGPoint
 
 /// Get the HTML element at the given location in the given web view.
