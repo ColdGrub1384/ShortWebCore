@@ -1,6 +1,6 @@
 # ShortWebCore
 
-This iOS library lets you running automations on Web Views.
+This iOS library lets you run automations on Web Views.
 
 ## Example
 
