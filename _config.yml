@@ -2,7 +2,7 @@
 page_title                                :                                           # Automatically populates with app name if not set and if iOS app ID is set. Otherwise enter manually.
 
 # App Info
-ios_app_id                                : 1436650069                                # Required. Enter iOS app ID to automatically populate name, price and icons (e.g. 718043190).
+ios_app_id                                : 1570003826 # Required. Enter iOS app ID to automatically populate name, price and icons (e.g. 718043190).
 
 appstore_link                             :                                           # Automatically populates if not set and if iOS app ID is set. Otherwise enter manually.
 playstore_link                            :                                           # Enter Google Play Store URL.
@@ -11,8 +11,8 @@ presskit_download_link                    :                                     
 
 app_icon                                  : # assets/appicon.png                      # Automatically populates if not set and if iOS app ID is set.  Otherwise enter path to icon file manually.
 app_name                                  :                                           # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
-app_price                                 : $2.99 / $9.99 / 3-day Trial               # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
-app_description                           : Code Python on iOS
+app_price                                 :
+app_description                           : Web automations
 
 enable_smart_app_banner                   : true                                      # Set to true to show a smart app banner at top of page on mobile devices.
 
@@ -24,10 +24,10 @@ your_name                                 : Emma Labbé
 your_link                                 : https://labbe.me
 
 your_city                                 : Viña Del Mar
-email_address                             : support@pyto.app
+email_address                             : emma@labbe.me
 facebook_username                         :                                           
 instagram_username                        : 
-twitter_username                          : pytoapp
+twitter_username                          : develobile
 github_username                           : ColdGrub1384
 youtube_username                          :
 
@@ -36,17 +36,17 @@ youtube_username                          :
 # Feature List                            Edit, add or remove features to be presented.
 features                                  :
     
-  - title                                 : Python locally
-    description                           : Run Python code locally on your iPad or iPhone.
-    fontawesome_icon_name                 : mobile
+  - title                                 : Automatize web pages
+    description                           : Record and run automations in web pages without coding.
+    fontawesome_icon_name                 : robot
 
-  - title                                 : Code Editor
-    description                           : Edit code with syntax highlighting and code completion.
-    fontawesome_icon_name                 : keyboard
+  - title                                 : Shortcuts
+    description                           : Run automations in background and with custom input with Shortcuts
+    fontawesome_icon_name                 : cubes
 
-  - title                                 : Included libraries
-    description                           : Pyto includes Numpy, Matplotlib, Pandas, Statsmodels, SciPy, SciKit-Learn, SciKit-Image, OpenCV and more libraries!
-    fontawesome_icon_name                 : magic
+  - title                                 : iCloud
+    description                           : Share your automations with all your devices through iCloud.
+    fontawesome_icon_name                 : cloud
 
   - title                                 : System integration
     description                           : Pyto includes libraries for scheduling notifications, accessing location, accessing the music library and more.
@@ -55,25 +55,9 @@ features                                  :
   - title                                 : Shortcuts
     description                           : Run scripts or custom code with Shortcuts.
     fontawesome_icon_name                 : cubes
-  
-  - title                                 : Home Screen Widgets
-    description                           : Create home screen widgets for iOS 14.
-    fontawesome_icon_name                 : calendar-alt
-  
-  - title                                 : PyPi
-    description                           : Install pure Python modules from PyPi.
-    fontawesome_icon_name                 : box-open
 
-  - title                                 : Native file browser
-    description                           : Pyto uses the native iOS file browser so you can create and run scripts from any place, like Working Copy for example.
-    fontawesome_icon_name                 : share-alt
-
-  - title                                 : Documentation
-    description                           : Documentation available on <a href="http://pyto.readthedocs.io">ReadTheDocs<a/>.
-    fontawesome_icon_name                 : book
-
-  - title                                 : Open Source
-    description                           : Pyto's source code is available on <a href="https://github.com/ColdGrub1384/Pyto">GitHub</a>.
+  - title                                 : iOS API
+    description                           : ShortWeb's core logic is <a href="https://github.com/ColdGrub1384/ShortWebCore">open source</a>.
     fontawesome_icon_name                 : lock-open
 
 
