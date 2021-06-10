@@ -21,6 +21,14 @@ public class WebView: WKWebView {
     
     let group = DispatchGroup()
     
+    public override var inputView: UIView? {
+        if automationRunner?.isRunning == true {
+            return UIView()
+        } else {
+            return super.inputView
+        }
+    }
+    
     // https://stackoverflow.com/a/52109021/7515957
     private func makeConfiguration() {
         

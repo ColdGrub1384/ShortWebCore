@@ -47,7 +47,10 @@ public class WebViewManager: NSObject, WKNavigationDelegate, WKScriptMessageHand
         decisionHandler(.allow)
     }*/
     
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {        
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        webView.reloadInputViews()
+        
         guard let jsURL = Bundle.module.url(forResource: "index", withExtension: "js") else {
             return
         }

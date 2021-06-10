@@ -40,6 +40,10 @@ public class AutomationRunner: NSObject {
     
     private var backgroundTask: UIBackgroundTaskIdentifier?
     
+    internal var isRunning = false
+    
+    private var inputCompletion: ((String) -> Void)?
+    
     /// Initializes the automation runner with the given actions and web view.
     ///
     /// - Parameters:
@@ -87,6 +91,9 @@ public class AutomationRunner: NSObject {
     /// Stops the execution of the actions.
     public func stop() {
         _stop = true
+        isRunning = false
+        inputCompletion?("")
+        inputCompletion = nil
         DispatchQueue.main.async {
             if self.webView.isLoading {
                 self.webView.stopLoading()
@@ -111,12 +118,14 @@ public class AutomationRunner: NSObject {
             DispatchQueue.main.async {
                 self.completion = nil
                 self._stop = false
+                self.isRunning = false
                 
                 if !self.webViewWasVisible {
                     self.webView.removeFromSuperview()
                 }
                 
                 self.webViewWasVisible = true
+                (self.webView as? WebView)?.automationRunner = nil
                 
                 if let task = self.backgroundTask {
                     (UIApplication.perform(NSSelectorFromString("sharedApplication")).takeUnretainedValue() as? UIApplication)?.endBackgroundTask(task)
@@ -199,7 +208,10 @@ public class AutomationRunner: NSObject {
                             queue.async {
                                 self.executeAction(at: index, frame: frame, customAction: Action(type: .input(path, input), timeout: action.timeout))
                             }
+                            self.inputCompletion = nil
                         }
+                        
+                        self.inputCompletion = didProvideInput
                         
                         DispatchQueue.main.async {
                             self.delegate?.automationRunner(self, shouldProvideInput: didProvideInput, for: action, at: index)
@@ -339,7 +351,10 @@ public class AutomationRunner: NSObject {
         
         backgroundTask = app?.beginBackgroundTask(expirationHandler: nil)
         
+        (self.webView as? WebView)?.automationRunner = self
+        
         queue.async {
+            self.isRunning = true
             self.executeAction(at: 0)
         }
     }
