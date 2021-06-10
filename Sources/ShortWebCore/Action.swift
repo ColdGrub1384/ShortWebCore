@@ -97,18 +97,21 @@ public struct Action: Hashable, Codable {
     enum CodingKeys: CodingKey {
         case type
         case timeout
+        case askEachTime
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
         try container.encode(timeout, forKey: .timeout)
+        try container.encode(askForValueEachTime, forKey: .askEachTime)
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         type = try container.decode(ActionType.self, forKey: .type)
         timeout = (try? container.decode(TimeInterval.self, forKey: .timeout)) ?? 0
+        askForValueEachTime = (try? container.decode(Bool.self, forKey: .askEachTime)) ?? false
     }
     
     // MARK: - Hashable
