@@ -17,7 +17,7 @@ public protocol AutomationRunnerDelegate {
     func automationRunner(_ automationRunner: AutomationRunner, didGet result: Any, for action: Action, at index: Int)
     
     /// The automation runner needs input for the given text input action.
-    func automationRunner(_ automationRunner: AutomationRunner, shouldProvideInput completionHandler: (String) -> Void, for action: Action, at index: Int)
+    func automationRunner(_ automationRunner: AutomationRunner, shouldProvideInput completionHandler: @escaping (String) -> Void, for action: Action, at index: Int)
     
     /// The automation finished running.
     func automationRunnerDidFinishRunning(_ automationRunner: AutomationRunner)
