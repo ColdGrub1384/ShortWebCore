@@ -117,7 +117,7 @@ public struct Action: Hashable, Codable {
     // MARK: - Hashable
     
     public static func == (lhs: Action, rhs: Action) -> Bool {
-        return lhs.description == rhs.description && lhs.timeout == rhs.timeout
+        return lhs.description == rhs.description && lhs.timeout == rhs.timeout && lhs.askForValueEachTime == rhs.askForValueEachTime
     }
     
     public func hash(into hasher: inout Hasher) {
