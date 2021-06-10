@@ -196,10 +196,14 @@ public class AutomationRunner: NSObject {
                 case .input(let path, _):
                     if action.askForValueEachTime {
                         func didProvideInput(_ input: String) {
-                            self.executeAction(at: index, frame: frame, customAction: Action(type: .input(path, input), timeout: action.timeout))
+                            queue.async {
+                                self.executeAction(at: index, frame: frame, customAction: Action(type: .input(path, input), timeout: action.timeout))
+                            }
                         }
                         
-                        self.delegate?.automationRunner(self, shouldProvideInput: didProvideInput, for: action, at: index)
+                        DispatchQueue.main.async {
+                            self.delegate?.automationRunner(self, shouldProvideInput: didProvideInput, for: action, at: index)
+                        }
                         return
                     }
                 default:
