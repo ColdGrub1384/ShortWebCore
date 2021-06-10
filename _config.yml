@@ -48,14 +48,6 @@ features                                  :
     description                           : Share your automations with all your devices through iCloud.
     fontawesome_icon_name                 : cloud
 
-  - title                                 : System integration
-    description                           : Pyto includes libraries for scheduling notifications, accessing location, accessing the music library and more.
-    fontawesome_icon_name                 : cog
-
-  - title                                 : Shortcuts
-    description                           : Run scripts or custom code with Shortcuts.
-    fontawesome_icon_name                 : cubes
-
   - title                                 : iOS API
     description                           : ShortWeb's core logic is <a href="https://github.com/ColdGrub1384/ShortWebCore">open source</a>.
     fontawesome_icon_name                 : lock-open
