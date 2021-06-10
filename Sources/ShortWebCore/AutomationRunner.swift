@@ -186,13 +186,22 @@ public class AutomationRunner: NSObject {
                 waitingFrame = nil
                 
             } else { // Exists
-                
+                                
                 switch action.type {
                 case .iframe(let iframePath, let actionType):
                     (webView as? WebView)?.inspect({ manager in
                         return self.executeAction(at: index, frame: manager.frame(for: iframePath), customAction: Action(type: actionType))
                     })
                     return
+                case .input(let path, _):
+                    if action.askForValueEachTime {
+                        func didProvideInput(_ input: String) {
+                            self.executeAction(at: index, frame: frame, customAction: Action(type: .input(path, input), timeout: action.timeout))
+                        }
+                        
+                        self.delegate?.automationRunner(self, shouldProvideInput: didProvideInput, for: action, at: index)
+                        return
+                    }
                 default:
                     break
                 }
@@ -238,7 +247,7 @@ public class AutomationRunner: NSObject {
                                 case .uploadFile(_, let url):
                                     if self.webView.window == nil {
                                         NSLog("The web view currently running an automation is not in the view hierarchy and a file upload dialog was presented. The file upload could not be automatized.")
-                                    } else {
+                                    } else if !action.askForValueEachTime {
                                         DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                                             
                                             var presented = self.webView.window?.rootViewController

@@ -18,6 +18,9 @@ public struct Action: Hashable, Codable {
     /// A timeout if the element does not exist.
     public var timeout: TimeInterval
     
+    /// If set to `true`, the automation runner will ask for input before running the action instead of the input saved in the disk.
+    public var askForValueEachTime = false
+    
     /// Initialize an action with the given type.
     ///
     /// - Parameters:
